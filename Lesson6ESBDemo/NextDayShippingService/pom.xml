@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>shop</groupId>
-	<artifactId>WebShop</artifactId>
+	<artifactId>NextDayShippingService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>WebShop</name>
-	<description>WebShop</description>
+	<name>NextDayShippingService</name>
+	<description>Next-day shipping service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

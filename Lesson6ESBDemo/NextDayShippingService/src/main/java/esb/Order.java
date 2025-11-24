@@ -38,8 +38,12 @@ public class Order {
 		this.orderType = orderType;
 	}
 
+	@Override
 	public String toString() {
-		return "order: nr=" + orderNumber + " amount=" + amount + " type=" + orderType;
+		return "Order{" +
+				"orderNumber='" + orderNumber + '\'' +
+				", amount=" + amount +
+				", orderType='" + orderType + '\'' +
+				'}';
 	}
-
 }

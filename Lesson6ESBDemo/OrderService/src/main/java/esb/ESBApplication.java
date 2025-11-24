@@ -13,16 +13,15 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class ESBApplication implements CommandLineRunner {
+	private final RestTemplate restTemplate;
+
 	@Autowired
-	RestTemplate restTemplate;
+	public ESBApplication(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ESBApplication.class, args);
-	}
-
-	@Bean
-	RestTemplate restTemplate(){
-		return new RestTemplate();
 	}
 
 	@Override

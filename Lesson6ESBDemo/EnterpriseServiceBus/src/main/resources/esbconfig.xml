@@ -8,19 +8,43 @@
 			http://www.springframework.org/schema/integration/spring-integration.xsd">
 
 	<channel id="wharehousechannel"/>
-	<channel id="shippingchannel"/>
+	<channel id="shippingTypeRouterChannel"/>
+	<channel id="domesticRoutingChannel"/>
+	<channel id="normalShippingChannel"/>
+	<channel id="nextDayShippingChannel"/>
+	<channel id="internationalShippingChannel"/>
 
 	<service-activator input-channel="wharehousechannel"
-	                   output-channel="shippingchannel"
+	                   output-channel="shippingTypeRouterChannel"
 	                   ref="warehouseservice"
 	                   method="checkStock"/>
-	                   
-	<service-activator input-channel="shippingchannel"
+
+	<router input-channel="shippingTypeRouterChannel"
+	        ref="orderTypeRouter"
+	        method="route"/>
+
+	<router input-channel="domesticRoutingChannel"
+	        ref="domesticAmountRouter"
+	        method="route"/>
+
+	<service-activator input-channel="normalShippingChannel"
 	                   ref="shippingservice"
 	                   method="ship"/>
-	                   
+
+	<service-activator input-channel="nextDayShippingChannel"
+	                   ref="nextDayShippingService"
+	                   method="ship"/>
+
+	<service-activator input-channel="internationalShippingChannel"
+	                   ref="internationalShippingService"
+	                   method="ship"/>
+
 	<beans:bean id="warehouseservice" class="esb.WarehouseActivator"/>
 	<beans:bean id="shippingservice" class="esb.ShippingActivator"/>
+	<beans:bean id="nextDayShippingService" class="esb.NextDayShippingActivator"/>
+	<beans:bean id="internationalShippingService" class="esb.InternationalShippingActivator"/>
+	<beans:bean id="orderTypeRouter" class="esb.OrderTypeRouter"/>
+	<beans:bean id="domesticAmountRouter" class="esb.DomesticAmountRouter"/>
 
 	
 </beans:beans>
