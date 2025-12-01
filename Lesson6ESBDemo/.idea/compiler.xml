@@ -6,14 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="InternationalShippingService" />
+        <module name="WebShop (4)" />
         <module name="WebShop (2)" />
         <module name="WebShop" />
         <module name="WebShop (3)" />
         <module name="WebShop (1)" />
         <module name="NextDayShippingService" />
-        <module name="InternationalShippingService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="WebShop" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -23,6 +27,7 @@
       <module name="WebShop (1)" options="-parameters" />
       <module name="WebShop (2)" options="-parameters" />
       <module name="WebShop (3)" options="-parameters" />
+      <module name="WebShop (4)" options="-parameters" />
     </option>
   </component>
 </project>
