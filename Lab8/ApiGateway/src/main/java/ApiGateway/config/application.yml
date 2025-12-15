@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: true
+
+    gateway:
+      routes:
+        - id: stock-service
+          uri: lb://stock-service
+          predicates:
+            - Path=/stock/**
+
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/products/**

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: stock-service
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: true
+        service-name: stock-service
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
