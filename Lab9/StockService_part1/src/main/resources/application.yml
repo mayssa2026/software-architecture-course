@@ -1,0 +1,27 @@
+server:
+  port: 8900
+
+spring:
+  application:
+    name: stockservice   # MUST be lowercase and match FeignClient name
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        prefer-ip-address: true
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans

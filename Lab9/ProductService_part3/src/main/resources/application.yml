@@ -1,0 +1,39 @@
+server:
+  port: 8901
+
+spring:
+  application:
+    name: ProductService
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${random.value}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,mappings
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      stockservice:
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+
+
