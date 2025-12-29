@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: lab10
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/cqrs_product_db
+
+server:
+  port: 8080
