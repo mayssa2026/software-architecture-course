@@ -1,21 +1,22 @@
 package transferclient;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import transferclient.TransferService;
 
 @RestController
 @RequestMapping("/transfer")
 public class TransferController {
-    private final TransferService transferService;
 
-    public TransferController(TransferService transferService) {
-        this.transferService = transferService;
+    private final TransferService service;
+
+    public TransferController(TransferService service) {
+        this.service = service;
     }
 
     @PostMapping
-    public String transfer(@RequestParam Long fromChecking,
-                           @RequestParam Long toSaving,
-                           @RequestParam double amount,
-                           @RequestParam(defaultValue = "false") boolean simulateError) {
-        return transferService.transfer(fromChecking, toSaving, amount, simulateError);
-    }
-}
+    public String transfer(@RequestParam Long checkingId,
+                           @RequestParam Long savingId,
+                           @RequestPara
